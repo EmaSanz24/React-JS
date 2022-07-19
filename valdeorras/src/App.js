@@ -1,9 +1,10 @@
-import './App.css';
+import './App.scss';
+import NavBar from './components/NavBar/NavBar'
 
 function App() {
   return (
-    <div className="App">
-      <h1> Valdeorras </h1>
+    <div className="main-container">
+      <NavBar  />
     </div>
   );
 }

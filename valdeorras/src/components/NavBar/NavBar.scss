@@ -1,0 +1,28 @@
+header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px;
+    box-shadow: 1px 4px 10px #2c0707;
+
+    img{
+        margin: 0px;
+        width: 8%;
+    }
+    ul{
+        list-style: none;
+        display: flex;
+        align-self: flex-end;
+        
+        li{
+            margin: 5px;
+            button{
+                font-weight: 600;
+                background: none;
+                border: none;
+                font-size: 17px;
+                text-transform: uppercase;
+            }  
+        }
+    }
+}
