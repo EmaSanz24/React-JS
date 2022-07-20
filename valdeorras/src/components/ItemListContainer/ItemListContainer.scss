@@ -1,0 +1,15 @@
+.list-products{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.product-cards{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+h2{
+    align-self: center;
+    text-decoration: underline;
+    font-size: 40px;
+}

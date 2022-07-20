@@ -13,6 +13,9 @@ header{
         list-style: none;
         display: flex;
         align-self: flex-end;
+
+
+        
         
         li{
             margin: 5px;
@@ -22,7 +25,21 @@ header{
                 border: none;
                 font-size: 17px;
                 text-transform: uppercase;
+                color: #2c0707;
+                cursor: pointer;
+                &:hover{
+                    color: #881616;
+                    
+                }
             }  
+        }
+    }
+    .cart-widget{
+        
+        align-self: flex-end;
+        cursor: pointer;
+        &:hover{
+            color: #881616;
         }
     }
 }
