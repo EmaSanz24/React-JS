@@ -1,0 +1,28 @@
+.Item-Detail{
+    display: flex;
+    
+    h2{
+        font-size: 48px;
+        font-weight: 600;
+        text-decoration: none;
+        margin-bottom: 20px; 
+    }
+    p{
+        font-size: 24px;
+        margin-bottom: 25px;
+    }
+    span{
+        font-weight: 700;
+        font-size: 35px;
+        align-self: flex-end; 
+    }
+    img{
+        max-width: 50%;
+    }
+    .Item-Info{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: space-between ;
+    }
+}

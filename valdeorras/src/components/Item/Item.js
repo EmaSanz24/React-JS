@@ -1,6 +1,4 @@
 
-
-
 const Item = ({data}) => {
     const {title, image, price} = data
     return(
@@ -9,7 +7,7 @@ const Item = ({data}) => {
             <div className='product-details'>
                 <p>{title}</p>
                 <span>${price}</span>
-                <button className='boton'>Mas Informacion</button>
+                <button className='more-info'>Mas Informacion</button>
                 
             </div>
         </div>
