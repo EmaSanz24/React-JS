@@ -5,6 +5,9 @@ const products = [
         price: 7500,
         image: 'Remera1.jpg',
         stock: 3,
+        category: 'Vestimenta',
+        type: 'Remeras',
+        description:`Elegante remera ideal para el verano y del mas suave algodon con un diseño "camo"`
     },
     {
         id: 2,
@@ -12,6 +15,9 @@ const products = [
         price: 7800,
         image: 'Remera2.jpg',
         stock: 5,
+        category: 'Vestimenta',
+        type: 'Remeras',
+        description:`Remera clasica color naranja ideal para el dia a dia`
     },
     {
         id: 3,
@@ -19,6 +25,9 @@ const products = [
         price: 18000,
         image: 'Buzo1.jpg',
         stock: 7,
+        category: 'Vestimenta',
+        type: 'Abrigos',
+        description:`Buzo canguro color azul marino, ideal para los dias de frio`
     },
     {
         id: 4,
@@ -26,6 +35,9 @@ const products = [
         price: 21000,
         image: 'Campera1.jpg',
         stock: 10,
+        category: 'Vestimenta',
+        type: 'Abrigos',
+        description:`Campera canguro con detallado en manga y logo de la marca, ideal para los dias de primavera`
     },
 ]
 

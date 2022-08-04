@@ -5,18 +5,21 @@ header{
     padding: 0px;
     box-shadow: 1px 4px 10px #2c0707;
 
-    img{
-        margin: 0px;
-        width: 8%;
+    a{
+        margin: 0;
+        max-width: 8%;
+
+        img{
+            margin: 0px;
+            width: 100%;
+        }
     }
+    
     ul{
         list-style: none;
         display: flex;
         align-self: flex-end;
-
-
-        
-        
+ 
         li{
             margin: 5px;
             button{
@@ -35,11 +38,14 @@ header{
         }
     }
     .cart-widget{
-        
+        a{
+            color: #2c0707;
+        }
         align-self: flex-end;
         cursor: pointer;
         &:hover{
             color: #881616;
         }
     }
+    
 }

@@ -1,33 +1,29 @@
 import './App.scss';
 import NavBar from './components/NavBar/NavBar'
-import ItemListContainer from './components/ItemListContainer/ItemListContainer';
-import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
-import Detail from './utils/detailProduct.mock';
-import {useEffect, useState} from "react"
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Home from './pages/Home'
+import Category from './pages/Category'
+import Detail from './pages/Detail'
 
 function App() {
-  const [item, setItem] = useState([])
-
-    const getItem = new Promise ((resolve, reject) => {
-        setTimeout(()=> {
-            resolve(Detail)
-        }, 2000)
-    })
-    useEffect (()=> {
-        getItem
-            .then((res)=>{
-                setItem(res)
-            })
-    }, [])
 
   return (
-    <div className= 'container'>
+
+    <BrowserRouter>
       <NavBar/>
-      <div className="main-container">
-        <ItemListContainer greeting="Productos Destacados"/>
-        <ItemDetailContainer Item={item}/>
-      </div>
-    </div>
+      <Routes>
+        <Route path= '/' element= {<Home/>}></Route>
+        <Route path= '/products' element={<Home/>}/>
+        <Route path= '/products/:category' element={<Category/>}/>
+        <Route path= '/products/:category/:type' element={<Category/>}/>
+        <Route path= '/products/:category/:type/:Id' element={<Detail/>}/>
+        <Route path= '/about-us' element={<h1>futuro about us</h1>}/>
+        <Route path= '/contact' element={<h1>futuro contact</h1>}/> 
+        <Route path= '/cart'element={<h1>futuro carrito</h1>}/>
+        <Route path= '*' element= {<h1>ERROR 404 - Page Not Found</h1>}/>
+        
+      </Routes>
+    </BrowserRouter>
     
   );
 }

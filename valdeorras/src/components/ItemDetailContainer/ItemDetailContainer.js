@@ -1,12 +1,25 @@
 import ItemDetail from "../ItemDetail/ItemDetail"
+import products from '../../utils/products.mock'
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 
-const ItemDetailContainer = ({Item})=> {
+const ItemDetailContainer = ()=> {
     
+    const [productDetail, setProductDetail] = useState({})
+    const { Id } = useParams() 
+    useEffect( ()=> {
+        filterById()
+    }, [Id])
+
+    const filterById = () => {
+        products.some( (product) => {
+            if(product.id == Id) {
+                setProductDetail(product)
+            }
+    })}
     return(
-        <div>
-             {Item.map((product)=>{
-                return <ItemDetail key={product.id} data={product}/>
-            })}
+        <div>             
+            <ItemDetail data={productDetail}/>    
         </div>  
     )
 }

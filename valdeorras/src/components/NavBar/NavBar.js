@@ -1,20 +1,20 @@
 //UpperCamelCase
 import './NavBar.scss'
+import { Link } from 'react-router-dom'
 import CartWidget from './CartWidget'
 const NavBar = () => {
     return(
         
             <header>
-                <img src="/assets/logo.png" alt= "logo Valdeorras"/>
+                <Link to='/'><img src="/assets/logo.png" alt= "logo Valdeorras"/></Link>
                 <ul>
-                    <li><button>Inicio</button></li>
-                    <li><button>Productos</button></li>
-                    <li><button>Ofertas</button></li>
-                    <li><button>About Us</button></li>
-                    <li><button>Contacto</button></li>
+                    <li><Link to='/'><button>Inicio</button></Link></li>
+                    <li><Link to='/products'><button>Productos</button></Link></li>
+                    <li><Link to='/about-us'><button>About Us</button></Link></li>
+                    <li><Link to='/contact'><button>Contacto</button></Link></li>
                 </ul>
                 <div className='cart-widget'>
-                    <CartWidget/>
+                    <Link to='/cart'><CartWidget/></Link>
                 </div>
                 
             </header>
