@@ -1,12 +1,15 @@
+import ItemCount from '../ItemCount/ItemCount'
+import {useState} from 'react'
+import {Link} from 'react-router-dom'
 import './ItemDetail.scss'
 
 const ItemDetail = ({data}) => {
 
     const {title, image, price, description, stock} = data
-    
+    const [qttSelected, setQttSelected] = useState(0)
+
     return(
-        <>
-        {/*<h1>Item Detail</h1>*/}
+        
         <div className = "Item-Detail">
             <img src={`/assets/Products/${image}`}/>
             <div className = "Item-Info">
@@ -15,10 +18,13 @@ const ItemDetail = ({data}) => {
                 <div>
                 <span>${price}</span>
                 </div>
-
+                <div>
+                    {qttSelected > 0?<button><Link className='toCart' to='/cart'>Terminar Compra</Link></button> : <ItemCount setQttSelected = {setQttSelected} stock={stock} initial={1}/>}
+                </div>
+                
             </div>
+            
         </div>
-        </>
         
     )
 }

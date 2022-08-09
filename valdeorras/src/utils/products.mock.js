@@ -39,6 +39,16 @@ const products = [
         type: 'Abrigos',
         description:`Campera canguro con detallado en manga y logo de la marca, ideal para los dias de primavera`
     },
+    {
+        id: 5,
+        title: 'Zapatillas Air Force 1',
+        price: 50000,
+        image: 'Zapatillas1.jpg',
+        stock: 2,
+        category: 'Calzado',
+        type: 'Casual',
+        description:`Como un ícono del básquet que se traslada a las calles y la ciudad Las Zapatillas Nike Air Force 1.`
+    },
 ]
 
 export default products

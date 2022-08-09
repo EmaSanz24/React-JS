@@ -8,12 +8,12 @@ const ItemDetailContainer = ()=> {
     const [productDetail, setProductDetail] = useState({})
     const { Id } = useParams() 
     useEffect( ()=> {
-        filterById()
+        filterById(Id)
     }, [Id])
 
-    const filterById = () => {
+    const filterById = (id) => {
         products.some( (product) => {
-            if(product.id == Id) {
+            if(product.id == id) {
                 setProductDetail(product)
             }
     })}

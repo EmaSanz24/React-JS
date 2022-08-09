@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    background-color: aliceblue;
     button{
         max-width: 30px;
         font-size: 30px;
@@ -12,5 +11,8 @@
         width: 10px;
         font-weight: 600;
     }
-    
+}
+.addOnCart{
+    width: 200px;
+    height: 30px;
 }
