@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Category from "./pages/Category";
 import Detail from "./pages/Detail";
 import ProductsInCart from "./context/CartContext";
+import Cart from "./pages/Cart";
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
           <Route path="/products/:category/:type/:Id" element={<Detail />} />
           <Route path="/about-us" element={<h1>futuro about us</h1>} />
           <Route path="/contact" element={<h1>futuro contact</h1>} />
-          <Route path="/cart" element={<h1>futuro carrito</h1>} />
+          <Route path="/cart" element={<Cart />} />
           <Route path="*" element={<h1>ERROR 404 - Page Not Found</h1>} />
         </Routes>
       </BrowserRouter>
