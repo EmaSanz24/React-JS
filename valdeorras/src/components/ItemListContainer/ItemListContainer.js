@@ -9,6 +9,8 @@ import db from "../../FirebaseConfig";
 const ItemListContainer = ({ info }) => {
   const [listProducts, setListProducts] = useState([]);
   const [title, setTitle] = useState();
+  const { category, type } = useParams();
+  const [itemCollection, setItemCollection] = useState([]);
 
   const getProducts = async () => {
     const productsData = collection(db, "products");
@@ -22,18 +24,17 @@ const ItemListContainer = ({ info }) => {
   };
   useEffect(() => {
     getProducts().then((res) => {
-      setListProducts(res);
+      setItemCollection(res);
+      console.log("pide a firebase");
     });
-  });
-  const { category, type } = useParams();
-
+  }, []);
   let catFilt = [];
   let typFilt = [];
   useEffect(() => {
     typeCheck();
     filterByCategory();
     filterByType();
-  }, [type, category]);
+  }, [type, category, itemCollection]);
 
   const typeCheck = () => {
     typeof type !== "undefined" ? setTitle(type) : setTitle(category);
@@ -41,20 +42,21 @@ const ItemListContainer = ({ info }) => {
 
   const filterByCategory = () => {
     catFilt = [];
-    listProducts.map((product) => {
+    itemCollection.map((product) => {
       if (product.category === category) {
         catFilt.push(product);
         setListProducts(catFilt);
       } else if (info === "main") {
         setTitle("Productos Destacados");
-        setListProducts(listProducts);
+
+        setListProducts(itemCollection);
       }
     });
   };
 
   const filterByType = () => {
     typFilt = [];
-    listProducts.map((product) => {
+    itemCollection.map((product) => {
       if (product.type === type) {
         typFilt.push(product);
         setListProducts(typFilt);

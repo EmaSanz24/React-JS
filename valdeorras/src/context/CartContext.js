@@ -24,8 +24,6 @@ const ProductsInCart = ({ children }) => {
     let total = product.price * product.quantity + cartPriceTotal;
     setCartTotal(product.quantity + cartTotal);
 
-    //console.log(cartProducts)
-
     if (inCart) {
       setCartPriceTotal(total);
       setCartProducts(
@@ -37,7 +35,6 @@ const ProductsInCart = ({ children }) => {
       );
     } else {
       setCartPriceTotal(total);
-      console.log(cartPriceTotal);
       return setCartProducts((cartProducts) => [...cartProducts, product]);
     }
   };

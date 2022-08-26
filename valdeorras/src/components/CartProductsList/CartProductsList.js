@@ -10,6 +10,7 @@ const CartProductList = ({ products }) => {
   const { cartPriceTotal, clear, cartProducts } = useContext(CartContext);
   const [success, setSuccess] = useState();
   const [showModal, setShowModal] = useState(false);
+  console.log(cartProducts);
 
   const [order, setOrder] = useState({
     items: cartProducts.map((product) => {
@@ -68,7 +69,9 @@ const CartProductList = ({ products }) => {
             </>
           ) : (
             <form onSubmit={submitData}>
+              <p>Nombre:</p>
               <input type="text" name="name" placerholder="Ingrese Su Nombre" onChange={change} value={formData.name} />
+              <p>Telefono:</p>
               <input
                 type="number"
                 name="phone"
@@ -76,6 +79,7 @@ const CartProductList = ({ products }) => {
                 onChange={change}
                 value={formData.phone}
               />
+              <p>Email</p>
               <input
                 type="email"
                 name="email"
