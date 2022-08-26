@@ -1,10 +1,45 @@
 import CartProduct from "../CartProduct/CartProduct";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CartContext } from "../../context/CartContext";
 import { Link } from "react-router-dom";
+import { collection, addDoc } from "firebase/firestore";
+import Modal from "../Modal/Modal";
+import db from "../../FirebaseConfig";
 
 const CartProductList = ({ products }) => {
-  const { cartPriceTotal, clear } = useContext(CartContext);
+  const { cartPriceTotal, clear, cartProducts } = useContext(CartContext);
+  const [success, setSuccess] = useState();
+  const [showModal, setShowModal] = useState(false);
+
+  const [order, setOrder] = useState({
+    items: cartProducts.map((product) => {
+      return {
+        id: product.id,
+        title: product.title,
+        price: product.price,
+      };
+    }),
+    buyer: {},
+    date: new Date().toLocaleString(),
+    total: cartPriceTotal,
+  });
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+  });
+  const change = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+  const submitData = (e) => {
+    e.preventDefault();
+    pushData({ ...order, buyer: formData });
+  };
+  const pushData = async (newOrder) => {
+    const collectionOrder = collection(db, "orders");
+    const orderDoc = await addDoc(collectionOrder, newOrder);
+    setSuccess(orderDoc.id);
+  };
   return (
     <div className="Cart-Product-List">
       <h1>Carrito de compras</h1>
@@ -20,9 +55,39 @@ const CartProductList = ({ products }) => {
           <div>
             <p>TOTAL: ${cartPriceTotal}</p>
             <button onClick={clear}>Borrar Todo</button>
+            <button onClick={() => setShowModal(true)}>Comprar</button>
           </div>
         )}
       </div>
+      {showModal && (
+        <Modal title="Formulario de envio" close={() => setShowModal()}>
+          {success ? (
+            <>
+              <h2>Felicidades su compra fue realizada correctamente</h2>
+              <span> ID de Compra: {success}</span>
+            </>
+          ) : (
+            <form onSubmit={submitData}>
+              <input type="text" name="name" placerholder="Ingrese Su Nombre" onChange={change} value={formData.name} />
+              <input
+                type="number"
+                name="phone"
+                placerholder="Ingrese Su Telefono"
+                onChange={change}
+                value={formData.phone}
+              />
+              <input
+                type="email"
+                name="email"
+                placerholder="Ingrese Su Email"
+                onChange={change}
+                value={formData.email}
+              />
+              <button type="submit">ENVIAR</button>
+            </form>
+          )}
+        </Modal>
+      )}
     </div>
   );
 };
