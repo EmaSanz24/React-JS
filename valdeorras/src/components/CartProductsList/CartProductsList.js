@@ -28,6 +28,7 @@ const CartProductList = ({ products }) => {
     name: "",
     phone: "",
     email: "",
+    address: "",
   });
   const change = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -40,6 +41,7 @@ const CartProductList = ({ products }) => {
     const collectionOrder = collection(db, "orders");
     const orderDoc = await addDoc(collectionOrder, newOrder);
     setSuccess(orderDoc.id);
+    clear();
   };
   return (
     <div className="Cart-Product-List">
@@ -68,27 +70,29 @@ const CartProductList = ({ products }) => {
               <span> ID de Compra: {success}</span>
             </>
           ) : (
-            <form onSubmit={submitData}>
-              <p>Nombre:</p>
-              <input type="text" name="name" placerholder="Ingrese Su Nombre" onChange={change} value={formData.name} />
-              <p>Telefono:</p>
-              <input
-                type="number"
-                name="phone"
-                placerholder="Ingrese Su Telefono"
-                onChange={change}
-                value={formData.phone}
-              />
-              <p>Email</p>
-              <input
-                type="email"
-                name="email"
-                placerholder="Ingrese Su Email"
-                onChange={change}
-                value={formData.email}
-              />
-              <button type="submit">ENVIAR</button>
-            </form>
+            <>
+              <p>Estas a solo un paso de terminar tu compra, por favor completa los siguentes datos para finalizar.</p>
+              <form onSubmit={submitData}>
+                <div>
+                  <p>Nombre:</p>
+                  <input type="text" name="name" placeholder="Ingrese Su Nombre" onChange={change} value={formData.name} />
+                </div>
+                <div>
+                  <p>Telefono:</p>
+                  <input type="number" name="phone" placeholder="Ingrese Su Telefono" onChange={change} value={formData.phone} />
+                </div>
+                <div>
+                  <p>Email:</p>
+                  <input type="email" name="email" placeholder="Ingrese Su Email" onChange={change} value={formData.email} />
+                </div>
+                <div>
+                  <p>Direccion:</p>
+                  <input type="text" name="address" placeholder="Ingrese Su Direccion" onChange={change} value={formData.address} />
+                </div>
+
+                <button type="submit">ENVIAR</button>
+              </form>
+            </>
           )}
         </Modal>
       )}

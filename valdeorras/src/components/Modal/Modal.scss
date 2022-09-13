@@ -27,3 +27,13 @@
 .modal-custom img {
   width: 100%;
 }
+p {
+  font-size: 18px;
+  padding-bottom: 5px;
+}
+form {
+  div {
+    display: flex;
+    flex-direction: row;
+  }
+}

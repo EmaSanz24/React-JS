@@ -9,6 +9,7 @@ import ProductsInCart from "./context/CartContext";
 import Cart from "./pages/Cart";
 import Type from "./pages/Type";
 import AboutUs from "./pages/About-Us";
+import Contact from "./pages/Contact";
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
           <Route path="/products/:category/:type" element={<Type />} />
           <Route path="/products/:category/:type/:Id" element={<Detail />} />
           <Route path="/about-us" element={<AboutUs />} />
-          <Route path="/contact" element={<h1>futuro contact</h1>} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="*" element={<h1>ERROR 404 - Page Not Found</h1>} />
         </Routes>
