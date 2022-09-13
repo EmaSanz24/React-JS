@@ -56,6 +56,9 @@ const Category = () => {
     } else if (category == "calzado") {
       setType1("casual");
       setType2("deportivo");
+    } else if (category == "accesorios") {
+      setType1("gorros");
+      setType2("mochilas");
     }
   };
 
