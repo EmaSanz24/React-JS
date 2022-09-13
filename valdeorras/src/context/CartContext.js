@@ -30,6 +30,8 @@ const ProductsInCart = ({ children }) => {
         cartProducts.map((productInCart) => {
           if (productInCart.id === product.id) {
             return { ...inCart, quantity: inCart.quantity + product.quantity };
+          } else {
+            return productInCart;
           }
         })
       );

@@ -2,16 +2,14 @@ import ItemListContainer from "../components/ItemListContainer/ItemListContainer
 import { collection, getDocs } from "firebase/firestore";
 import db from "../FirebaseConfig";
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Navigation from "../components/Navigation/Navigation";
 
-const Category = () => {
+const Type = () => {
   const [itemCollection, setItemCollection] = useState([]);
   const [listProducts, setListProducts] = useState([]);
   const { category, type } = useParams();
   const [title, setTitle] = useState("");
-  const [type1, setType1] = useState("");
-  const [type2, setType2] = useState("");
 
   const getProducts = async () => {
     const productsData = collection(db, "products");
@@ -29,49 +27,30 @@ const Category = () => {
       console.log("pide a firebase"); //Check de llamado a Firebase
     });
   }, []);
-  let catFilt = [];
+  let typFilt = [];
   useEffect(() => {
-    typeFilter();
     typeCheck();
-    filterByCategory();
+    filterByType();
   }, [type, category, itemCollection]);
 
   const typeCheck = () => {
     typeof type !== "undefined" ? setTitle(type) : setTitle(category);
   };
-  const filterByCategory = () => {
-    catFilt = [];
-
+  const filterByType = () => {
+    typFilt = [];
     itemCollection.map((product) => {
-      if (product.category === category) {
-        catFilt.push(product);
-        setListProducts(catFilt);
+      if (product.type === type) {
+        typFilt.push(product);
+        setListProducts(typFilt);
       }
     });
   };
-  const typeFilter = () => {
-    if (category == "vestimenta") {
-      setType1("remeras");
-      setType2("abrigos");
-    } else if (category == "calzado") {
-      setType1("casual");
-      setType2("deportivo");
-    }
-  };
-
   return (
     <div className="container">
       <Navigation />
       <h2>{title}</h2>
-      <div className="product-cards">
-        <Link to={`/products/${category}/${type1}`}>{type1}</Link>
-        <ItemListContainer info={type1} data={listProducts} />
-      </div>
-      <div className="product-cards">
-        <Link to={`/products/${category}/${type2}`}>{type2}</Link>
-        <ItemListContainer info={type2} data={listProducts} />
-      </div>
+      <ItemListContainer info="type" data={listProducts} />
     </div>
   );
 };
-export default Category;
+export default Type;

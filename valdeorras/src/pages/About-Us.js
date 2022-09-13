@@ -1,0 +1,21 @@
+const AboutUs = () => {
+  return (
+    <div>
+      <h2>Sobre Nosotros</h2>
+      <h3>Nuestra Historia</h3>
+      <p>
+        Valdeorras comenzó como un pasatiempo entre hermanos que les gustaba diseñar indumentaria en sus ratos libres, tras haber logrado muy buenas
+        ventas con su coleccion "Hawaii" los hermanos decidieron dejar sus trabajos en ese momento para dedicarse plenamente a este sueño que nacio en
+        su niñez.
+      </p>
+      <p>
+        Hoy en día Valdeorras es una de las marcas de indumentaria mas grande de America Latina, con casa matriz en Buenos aires, cuenta con
+        representantes oficiales en Brasil, Chile, Perú, Colombia, República Dominicana, Paraguay y Ecuador.
+      </p>
+
+      <h3>Eco-Friendly</h3>
+      <p>En Valdeorras la ecología es muy importante para nosotros, por eso</p>
+    </div>
+  );
+};
+export default AboutUs;

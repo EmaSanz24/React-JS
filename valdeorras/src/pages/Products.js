@@ -1,11 +1,11 @@
 import ItemListContainer from "../components/ItemListContainer/ItemListContainer";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { collection, getDocs } from "firebase/firestore";
 import db from "../FirebaseConfig";
-import { useEffect, useState } from "react";
 
-const Home = () => {
+const Products = () => {
   const [itemCollection, setItemCollection] = useState([]);
-  const [listProducts, setListProducts] = useState([]);
 
   const getProducts = async () => {
     const productsData = collection(db, "products");
@@ -23,22 +23,23 @@ const Home = () => {
       console.log("pide a firebase"); //Check de llamado a Firebase
     });
   }, []);
-  useEffect(() => {
-    featuredProducts();
-  }, [itemCollection]);
 
-  const featuredProducts = () => {
-    itemCollection.map((product) => {
-      if (product.id <= 6) {
-        setListProducts((listProducts) => [...listProducts, product]);
-      }
-    });
-  };
   return (
-    <div className="container">
-      <h2>Productos Destacados</h2>
-      <ItemListContainer info="home" data={listProducts} />
+    <div className="product-cards">
+      <h2>Nuestros Productos</h2>
+      <div>
+        <Link to={`/products/vestimenta`}>Vestimenta</Link>
+        <ItemListContainer info={"vestimenta"} data={itemCollection} />
+      </div>
+      <div>
+        <Link to={`/products/calzado`}>Calzado</Link>
+        <ItemListContainer info={"calzado"} data={itemCollection} />
+      </div>
+      <div>
+        <Link to={`/products/accesorios`}>Accesorios</Link>
+        <ItemListContainer info={"accesorios"} data={itemCollection} />
+      </div>
     </div>
   );
 };
-export default Home;
+export default Products;
